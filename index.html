@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Check the URL bar to observe the client side routing</h1>
+	<h1 id="page"></h1>
+</body>
+<script type="text/javascript">
+	(function(){
+		let routes = ["/home", "/about", "/contact", "/some/random/page", "/you/can/be/anywhere"];
+		let currentRoute = 0;
+		setInterval(function(){
+			window.history.replaceState({}, "", routes[currentRoute]);
+			document.getElementById("page").innerHTML = "Your are in " + routes[currentRoute];
+			if(currentRoute < routes.length - 1){
+				currentRoute++;
+			}
+			else{
+				currentRoute = 0;
+			}
+		}, 700);
+	}());
+</script>
+</html>
